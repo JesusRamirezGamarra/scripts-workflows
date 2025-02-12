@@ -36,6 +36,6 @@ jobs:
       - name: Mostrar variables del workflow
         run: |
           echo "Job message: $JOB_MESSAGE, Name: $NAME, Global_MESSAGE: $Global_MESSAGE"
-          echo "${{vars.API_URL}}"
+          echo "SECRECT Vars API_URL : ${{vars.API_URL}}"
         env:
           NAME: "Jesus Ramirez"
