@@ -12,10 +12,14 @@ jobs:
       - name: Clonar repositorion
         uses: actions/checkout@v4
 
-      - name: dar permisos de ejeciucion ...
+      - name: dar permisos de ejecucion ...
         run: |  
           chmod +x ./scripts/info.sh
 
       - name: Ejecutar script ...
         run: |
           ./scripts/info.sh
+          ./scripts/deploy.sh
+          ./scripts/message.sh
+        env:
+          MESSAGE: "valor del mensaje pasado por variable de entorno"
