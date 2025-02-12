@@ -1,9 +1,10 @@
 #!/bin/bash
 
 echo "datos del sistema"
-umame -a
+uname -a
 
 echo "almacenamiento:"  
 df -h
 
 echo "Proceso finzalizado"
+

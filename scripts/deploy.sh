@@ -6,4 +6,3 @@ echo "compilando archivos"
 echo "comprimiendo archivos"
 echo "desplegando archivos"
 
-sleep 3
