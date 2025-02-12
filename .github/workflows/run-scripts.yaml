@@ -8,6 +8,8 @@ on:
 jobs:
   run-scripts:  # Corregido el nombre del job
     runs-on: ubuntu-latest
+    env:
+      JOB_MESSAGE: "Hola JOB ..."
     steps:
       - name: Clonar repositorio
         uses: actions/checkout@v4
@@ -30,3 +32,9 @@ jobs:
         env:
           MENSAJE: "valor del mensaje pasado por variable de entorno"
           SEGUNDO: "Otoro valor"
+
+      - name: Mostrar variables del wordlow
+        run: |
+          echo "Job message: $JOB_MESSAGE" , $NAME"
+        env:
+          NAME: "Jesus Ramirez" 
