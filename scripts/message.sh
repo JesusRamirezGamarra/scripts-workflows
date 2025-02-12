@@ -7,5 +7,6 @@ if [ -Z "$MENSAJE"] ; then
     exit 1
 fi
 
-echo "Valor del mensaje recibido: $Mensaje"
+echo "Valor del mensaje recibido: $MENSAJE"
+echo "Valor del mensaje 2: $SEGUNDO"
 echo "Finalizando Script"
