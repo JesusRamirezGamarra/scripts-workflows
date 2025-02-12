@@ -42,7 +42,7 @@ jobs:
 
       - name: Valores del worflow ................
         run: |
-          echo : "Tipo de evento: ${{github.event_name}}"
+          echo : "Tipo de evento: ${{ github.event_name }}"
           echo: "nombre del repositorio ${{github.repository}}"
           echo: "Rama: ${{github.ref}}"
           echo: "Autor: ${{github.actor}}"
