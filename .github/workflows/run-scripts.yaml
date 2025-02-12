@@ -4,11 +4,12 @@ on:
   push:
     branches:
       - main
+
 env:
-  Global_MESSAGE: "Hola desde el WORKFLOWS  ..."
+  Global_MESSAGE: "Hola desde el WORKFLOWS ..."
 
 jobs:
-  run-scripts:  # Corregido el nombre del job
+  run-scripts:  
     runs-on: ubuntu-latest
     env:
       JOB_MESSAGE: "Hola JOB ..."
@@ -21,22 +22,19 @@ jobs:
           chmod +x ./scripts/*.sh
       
       - name: Ejecutar script info
-        run: |
-            ./scripts/info.sh
+        run: ./scripts/info.sh
 
       - name: Ejecutar script deploy
-        run: |
-            ./scripts/deploy.sh
+        run: ./scripts/deploy.sh
 
       - name: Ejecutar script message
-        run: |
-          ./scripts/message.sh
+        run: ./scripts/message.sh
         env:
           MENSAJE: "valor del mensaje pasado por variable de entorno"
-          SEGUNDO: "Otoro valor"
+          SEGUNDO: "Otro valor"
 
-      - name: Mostrar variables del wordlow
+      - name: Mostrar variables del workflow
         run: |
-          echo "Job message: $JOB_MESSAGE" , Name :  $NAME , Global_MESSAGE: $Global_MESSAGE"
+          echo "Job message: $JOB_MESSAGE, Name: $NAME, Global_MESSAGE: $Global_MESSAGE"
         env:
-          NAME: "Jesus Ramirez"  
+          NAME: "Jesus Ramirez"
