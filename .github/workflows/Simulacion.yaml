@@ -35,6 +35,9 @@ jobs:
       
       - name: Simular ejecucion de pruebas
         run: echo "Desplegar aplicacion..."
+
+      - name: Simular deploy con error..
+        run: exit 1
   
   notification-failure:
     runs-on: ubuntu-latest
