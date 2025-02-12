@@ -1,4 +1,4 @@
-name: Workflo to run scripts on
+name: Workflow to run scripts on
 
 on:
   push:
@@ -39,3 +39,16 @@ jobs:
           echo "SECRECT Vars API_URL : ${{vars.API_URL}}"
         env:
           NAME: "Jesus Ramirez"
+
+      - name: Valores del worflow ................
+        run: |
+          echo : "Tipo de evento: ${{github.event_name}}"
+          echo: "nombre del repositorio ${{github.repository}}"
+          echo: "Rama: ${{github.ref}}"
+          echo: "Autor: ${{github.actor}}"
+          echo: "Mensaje: ${{github.event.head_commit.message}}"
+          echo: "SHA: ${{github.sha}}"
+          echo: "Usuario que lanzo el workflow: ${{github.actor}}"
+          echo: "URL del repositorio: ${{github.event.repository.url}}"
+          echo: "nro de ejecuicion workflow: ${{github.run_number}}"
+          echo: "Mensaje de commit : ${{github.event.head_commit.message}}"
