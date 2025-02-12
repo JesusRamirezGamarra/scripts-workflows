@@ -22,5 +22,5 @@ jobs:
           ./scripts/deploy.sh
           ./scripts/message.sh
         env:
-          MESSAGE: "valor del mensaje pasado por variable de entorno"
+          MENSAJE: "valor del mensaje pasado por variable de entorno"
           SEGUNDO: "Otoro valor"
