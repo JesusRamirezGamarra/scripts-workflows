@@ -1,0 +1,21 @@
+name: Ejemplo de Estados
+
+on: push
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Paso exitoso
+        run: echo "Este paso es exitoso"
+
+      - name: Paso fallido
+        run: exit 1  # Simula un fallo
+
+      - name: Este paso solo corre si falla el anterior
+        if: failure()
+        run: echo "El step anterior falló"
+
+      - name: Este paso siempre se ejecuta
+        if: always()
+        run: echo "Se ejecuta sin importar los fallos"

@@ -1,21 +1,19 @@
-name: Ejemplo de Estados
+name: Workflow to check status
 
-on: push
+on: 
+  push:
+    branches:
+      - master 
 
 jobs:
-  test-job:
+  check-status:
     runs-on: ubuntu-latest
     steps:
-      - name: Paso exitoso
-        run: echo "Este paso es exitoso"
+      - name: Primer paso correcto..
+        run: echo "Hello world..."
 
-      - name: Paso fallido
-        run: exit 1  # Simula un fallo
-
-      - name: Este paso solo corre si falla el anterior
-        if: failure()
-        run: echo "El step anterior falló"
-
-      - name: Este paso siempre se ejecuta
-        if: always()
-        run: echo "Se ejecuta sin importar los fallos"
+      - name: Primer paso correcto..
+        run: exit 1
+      
+      - name: Step despues del error
+        run: echo "Mensaje de error..."
