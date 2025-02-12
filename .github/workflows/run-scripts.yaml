@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+env:
+  Global_MESSAGE: "Hola desde el WORKFLOWS  ..."
 
 jobs:
   run-scripts:  # Corregido el nombre del job
@@ -35,6 +37,6 @@ jobs:
 
       - name: Mostrar variables del wordlow
         run: |
-          echo "Job message: $JOB_MESSAGE" , $NAME"
+          echo "Job message: $JOB_MESSAGE" , Name :  $NAME , Global_MESSAGE: $Global_MESSAGE"
         env:
-          NAME: "Jesus Ramirez" 
+          NAME: "Jesus Ramirez"  
