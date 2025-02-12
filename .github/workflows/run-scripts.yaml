@@ -12,8 +12,17 @@ jobs:
       - name: Primer paso correcto..
         run: echo "Hello world..."
 
-      - name: Primer paso correcto..
+      - name: Paso que falla
         run: exit 1
-      
-      - name: Step despues del error
-        run: echo "Mensaje de error..."
+
+      - name: Step después del error (solo si el anterior fue exitoso)
+        if: success()
+        run: echo "Este mensaje NO aparecerá porque el paso anterior falló"
+
+      - name: Step después del error (solo si el anterior falló)
+        if: failure()
+        run: echo "El paso anterior falló. Este mensaje sí aparecerá."
+
+      - name: Step que siempre se ejecuta
+        if: always()
+        run: echo "Este mensaje aparece siempre, sin importar si falló o no."

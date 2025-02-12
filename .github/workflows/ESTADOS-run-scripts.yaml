@@ -1,0 +1,74 @@
+name: Workflow Completo - Estados
+
+on: push
+
+jobs:
+  # ------------------------------------
+  # JOB 1 - ÉXITO
+  # ------------------------------------
+  job_exito:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ✅ Paso exitoso
+        run: echo "Este paso se ejecuta correctamente."
+
+      - name: ⏭ Paso que se ejecuta si todo va bien
+        if: success()
+        run: echo "Este paso se ejecuta porque el anterior fue exitoso."
+
+  # ------------------------------------
+  # JOB 2 - FALLA
+  # ------------------------------------
+  job_falla:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚨 Paso que falla
+        run: exit 1  # Simula un error
+
+      - name: ❌ Este paso NO se ejecuta porque el anterior falló
+        if: success()
+        run: echo "Este mensaje NO se verá."
+
+      - name: ⚠️ Este paso SÍ se ejecuta porque el anterior falló
+        if: failure()
+        run: echo "El paso anterior falló, por eso esto se ejecuta."
+
+      - name: 🔄 Este paso SIEMPRE se ejecuta
+        if: always()
+        run: echo "Siempre se ejecuta, sin importar el resultado anterior."
+
+  # ------------------------------------
+  # JOB 3 - SE SALTA POR CONDICIÓN
+  # ------------------------------------
+  job_saltado:
+    runs-on: ubuntu-latest
+    if: false  # Esta condición hace que el job sea SKIPPED
+    steps:
+      - name: 🚀 Nunca se ejecutará
+        run: echo "Este mensaje nunca aparecerá."
+
+  # ------------------------------------
+  # JOB 4 - CANCELADO
+  # ------------------------------------
+  job_cancelado:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ❌ Simular cancelación
+        run: sleep 10 & kill $!  # Simula una cancelación forzando el proceso a detenerse
+
+      - name: 🔄 Esto NO se ejecuta porque fue cancelado
+        run: echo "No me verás."
+
+  # ------------------------------------
+  # JOB 5 - CONTINÚA A PESAR DEL ERROR
+  # ------------------------------------
+  job_continue_error:
+    runs-on: ubuntu-latest
+    continue-on-error: true  # Esto evita que el workflow falle completamente
+    steps:
+      - name: ❌ Paso que falla
+        run: exit 1
+
+      - name: ✅ Se ejecuta a pesar del error anterior
+        run: echo "Este paso se ejecuta xq el job usa continue-on-error = True"
+
